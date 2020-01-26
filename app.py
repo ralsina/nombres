@@ -36,6 +36,13 @@ def create_app():
         nombre = orm.Required(str, unique=True)
         masculinidad = orm.Optional(float)
 
+    class TotalPorNombre(db.Entity):
+        nombre = orm.Required(str)
+        contador = orm.Required(int)
+
+        def __repr__(self):
+            return f"{self.nombre}:{self.contador}"
+
     db.generate_mapping(create_tables=True)
 
     @orm.db_session
@@ -103,6 +110,14 @@ def create_app():
         )[:50]
         return filtrado
 
+    @orm.db_session
+    def datos_por_prefijo(prefijo):
+        # Nombres por prefijo, sin importar el año
+        filtrado = orm.select(
+            n for n in TotalPorNombre if n.nombre.startswith(prefijo)
+        ).order_by(orm.desc(TotalPorNombre.contador))[:50]
+        return filtrado
+
     @app.route("/query")
     @cross_origin()
     @orm.db_session
@@ -123,7 +138,7 @@ def create_app():
         elif prefijo is None and año is not None:
             datos = datos_del_año(año)
         elif prefijo is not None and año is None:
-            datos = []
+            datos = datos_por_prefijo(prefijo)
         else:
             # Filtramos por prefijo
             datos = orm.select(

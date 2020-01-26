@@ -43,6 +43,13 @@ class Dato(db.Entity):
     def __repr__(self):
         return f"{self.año}:{self.nombre}:{self.contador}"
 
+class TotalPorNombre(db.Entity):
+    nombre = orm.Required(str)
+    contador = orm.Required(int)
+
+    def __repr__(self):
+        return f"{self.nombre}:{self.contador}"
+
 db.generate_mapping(create_tables=True)
 
 def load_shelve():
@@ -64,6 +71,6 @@ def load_db():
         load_año(año, nombres)
 
 
-load_csv()
+# load_csv()
 # load_shelve()
-load_db()
+# load_db()

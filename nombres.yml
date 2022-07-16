@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://faas.ralsina.me
+functions:
+  nombres:
+    lang: python3-flask
+    handler: ./nombres
+    image: ralsina/nombres:latest
+

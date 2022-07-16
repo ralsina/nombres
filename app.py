@@ -132,6 +132,7 @@ def create_app():
         genero = request.args.get("g")
         if genero not in ("f", "m"):
             genero = None
+            pass
 
         if prefijo is None and año is None:
             datos = datos_globales()

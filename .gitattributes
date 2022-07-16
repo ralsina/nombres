@@ -1,0 +1,2 @@
+historico-nombres.csv filter=lfs diff=lfs merge=lfs -text
+nombres.db filter=lfs diff=lfs merge=lfs -text

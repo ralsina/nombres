@@ -5,9 +5,11 @@ from pony import orm
 import unicodedata
 import urllib
 import requests
+from pathlib import Path
 
 db = orm.Database()
-db.bind(provider="sqlite", filename="data/nombres.db", create_db=True)
+db_path = Path(__file__).parent / "data" / "nombres.db"
+db.bind(provider="sqlite", filename=str(db_path), create_db=False)
 
 
 def remove_accents(input_str):
@@ -162,11 +164,6 @@ def handle(req):
 
     # return Response(chart.render(is_unicode=True), mimetype="image/svg+xml")
     return chart.render(is_unicode=True)
-
-
-
-
-
 
 
 comunes = [
@@ -371,4 +368,3 @@ comunes = [
     (86483, "fabian"),
     (85476, "yesica"),
 ]
-

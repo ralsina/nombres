@@ -12,5 +12,4 @@ functions:
 configuration:
   copy:
     - ./data
-    - ./data.py
 

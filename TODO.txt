@@ -1,0 +1,4 @@
+* Cambiar esta base por la del server, que tiene género cacheado de
+  muchos nombres.
+* Como la base de datos va a ser inmutable, deberia resolver genero
+  de antemano con un script (eso va a tardar)

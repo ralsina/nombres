@@ -3,8 +3,14 @@ provider:
   name: openfaas
   gateway: https://faas.ralsina.me
 functions:
-  nombres:
+  query:
     lang: python3-flask
     handler: ./nombres
-    image: ralsina/nombres:latest
+    image: ralsina/nombres_query:latest
+    limits:
+      memory: 80Mi
+configuration:
+  copy:
+    - ./data
+    - ./data.py
 

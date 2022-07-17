@@ -8,5 +8,5 @@ docker run --rm --privileged \
 
 # Build and deploy
 faas-cli template store pull python3-flask
-faas-cli publish -f nombres.yml --platforms linux/arm64
+faas-cli publish -f nombres.yml --platforms linux/arm64 --build-arg 'TEST_ENABLED=false'
 faas-cli deploy -f nombres.yml

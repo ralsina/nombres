@@ -1,3 +1,14 @@
+"""
+Este script toma historico-nombres.csv, los datos oficiales del RENAPER
+y los procesa para limpiarlos un poco, sacarles acentos y caracteres
+extraños.
+
+Tambien parte los nombres completos y duplica los datos para que
+al buscar "juan" el contador cuente tanto a "juan pedro" como
+"juan martin"
+
+El resultado es una base sqlite nombres.db
+"""
 import csv
 import shelve
 import unicodedata

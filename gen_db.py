@@ -24,6 +24,8 @@ def load_csv():
             # nombre_completo es algo como "Juan Carlos".
             # Queremos poner "juan" y "juan carlos"
             nombre_completo = remove_accents(nombre_completo.lower())
+            nombre_completo = nombre_completo.replace(',', ' ')
+            nombre_completo = nombre_completo.replace('  ', ' ')
             nombre_partido = nombre_completo.split()
             for i in range(len(nombre_partido)):
                 nombre = " ".join(nombre_partido[: i + 1])
